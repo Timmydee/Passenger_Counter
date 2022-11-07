@@ -4,7 +4,8 @@ import './Home.css'
 const ACTIONS = {
   INCREMENT: 'increment',
   DECREMENT: 'decrement',
-  RESET: 'reset'
+  RESET: 'reset',
+  SET_VALUE: 'set'
 }
 
 function reducer(state, action){
@@ -15,6 +16,8 @@ function reducer(state, action){
       return { count: state.count - 1}
     case ACTIONS.RESET:
       return { count: 0}
+    case ACTIONS.SET_VALUE:
+        return { count: Number(action.payload) }
     default:
       return state
   }
@@ -35,6 +38,10 @@ const Home = () => {
     dispatch({ type: ACTIONS.RESET})
   }
 
+  function set(e){
+    dispatch({type: ACTIONS.SET_VALUE, payload: e.target.value})
+  }
+
   return (
     <div className='home'>
       <div className='home__app'>
@@ -47,8 +54,8 @@ const Home = () => {
           <button classname='res' onClick={reset}>Reset</button>
           <form>
             <input type='text' placeholder='Input Manually' 
-              // value={state.count} 
-              onChange={e => setNum(e.target.value)}
+              value={state.count} 
+              onChange = {set}
              />
              
           </form>

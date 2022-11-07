@@ -1,15 +1,21 @@
 import { useState } from 'react'
+// import { ErrorBoundary } from 'react-error-boundary'
 import Home from './Component/Home/Home'
+import { Counter } from './Component/Counter'
+import { ErrorBoundary } from './Component/errorBoundary'
 
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
       <Home />
+
+      {/* <ErrorBoundary>
+        <Counter />
+      </ErrorBoundary> */}
     </div>
+    
   )
 }
 
